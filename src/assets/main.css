@@ -1,0 +1,20 @@
+@import './base.css';
+
+#app {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  max-width: 2180px;
+  font-weight: normal;
+}
+
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 14rem;
+  padding-inline: 8rem;
+}
+
+
