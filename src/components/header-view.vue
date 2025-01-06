@@ -20,10 +20,16 @@ const headerTitle = "POKEMON";
             <p class="header-text">
                 {{ headerTitle }}
             </p>
-            <RouteLinkPrimary 
-                :to="`/pokédex`"
-                :text="'Pokédex'"
-            />
+            <div class="header-cta-container">
+                <RouteLinkPrimary 
+                    :to="`/pokedex`"
+                    :text="'Pokedex'"
+                />
+                <RouteLinkPrimary 
+                    :to="`/playground`"
+                    :text="'Playground'"
+                />
+            </div>
         </div>
     </header>
 </template>
@@ -35,7 +41,6 @@ const headerTitle = "POKEMON";
     top: 3rem;
     left: 50%;
     transform: translateX(-50%);
-    margin-inline: auto;
     width: 70%;
     max-width: 1200px;
     border: 1px solid var(--black-primary);
@@ -45,9 +50,12 @@ const headerTitle = "POKEMON";
 }
     
 .header-container {
-    display: flex;
+    display: grid;
+    grid-auto-rows: auto;
+    width: 100%;
+    grid-template-rows: 1;
     align-items: center;
-    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .header-text {
@@ -55,8 +63,14 @@ const headerTitle = "POKEMON";
     font-weight: 600;
     text-transform: uppercase;
     font-size: 48px;
+    display: grid;
+    justify-content: center;
 }
-
+.header-cta-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
 .logo-container {
     height: 4rem;
     width: 4rem;

@@ -20,8 +20,8 @@
                 </p>
             </div>
             <ButtonLinkPrimary 
-                :to="'/pokédex'"    
-                :text="'Pokédex'"
+                :to="'/pokedex'"    
+                :text="'Pokedex'"
             />
         </div>
     </main>

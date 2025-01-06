@@ -34,6 +34,10 @@ ul {
 }
 a {
   text-decoration: none;
+  color: currentColor;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   color: var(--black-light);

@@ -1,6 +1,7 @@
 
 <script setup>
 import { computed, onMounted, reactive } from 'vue';
+import { RouterLink } from 'vue-router';
 
     const props = defineProps({
         data: {
@@ -20,7 +21,7 @@ import { computed, onMounted, reactive } from 'vue';
         loading: false
     });
 
-    
+
     onMounted(() => {
 
 
@@ -44,7 +45,7 @@ import { computed, onMounted, reactive } from 'vue';
                     pokemonData.loading = false;
 
                 }
-                
+
             } catch (error) {
                 console.log(error, 'ERROR message here');
                 pokemonData.loading = false;
@@ -67,27 +68,52 @@ import { computed, onMounted, reactive } from 'vue';
 
     });
 
-
 </script>
 
 <template>
     <div class="poke-dex-card">
         <div class="poke-dex-img-container">
-            <img 
+            <div v-if="pokemonData.loading" style="display: flex; align-items: center; justify-content: center;" class="poke-dex-img">
+                Image loading...
+            </div>
+            <img
+                v-else
                 class="poke-dex-img"
                 :src="pokemonData.image"
             />
         </div>
         <div class="poke-dex-card-info-container">
-            <p class="pokemon-id">#{{ padId }}</p>
-            <p class="pokemon-name">
-                {{ pokemonData.name }}
+            <p class="pokemon-id">
+                <span v-if="pokemonData.loading">
+                    loading Pokemon id...
+                </span>
+                <span v-else>
+                    <span v-if="pokemonData.id">
+                        #{{ padId }}
+                    </span>
+                    <span v-else>
+                        no id
+                    </span>
+                </span>
             </p>
-            <ul 
+            <p class="pokemon-name">
+                <span v-if="pokemonData.loading">
+                    name loading....
+                </span>
+                <span v-else>
+                    <span v-if="pokemonData.name">
+                        {{ pokemonData.name }}
+                    </span>
+                    <span v-else>
+                        NO NAME
+                    </span>
+                </span>
+            </p>
+            <ul
                 :class="'pokemon-types-container'"
                 v-if="pokemonData.types.length > 0"
             >
-                <li 
+                <li
                     class="pokemon-type"
                     v-for="type in pokemonData.types"
                     :key="type"
@@ -95,6 +121,14 @@ import { computed, onMounted, reactive } from 'vue';
                     {{ type.type.name }}
                 </li>
             </ul>
+            <div v-if="pokemonData.id">
+                <RouterLink
+                    class=""
+                    :to="`/pokedex/${pokemonData.name}`"
+                >
+                    Learn more
+                </RouterLink>
+            </div>
         </div>
     </div>
 </template>
@@ -155,6 +189,14 @@ import { computed, onMounted, reactive } from 'vue';
         padding-inline: 0.64rem;
         height: fit-content;
         border-radius: var(--pokedex-card-img-container-radius);
+    }
+
+    .poke-dex-card.cta {
+        width: fit-content;
+        font-family: var(--font-secondary);
+        color: var(--black-light);
+        font-size: 20px;
+        cursor: pointer;
     }
 
 </style>
