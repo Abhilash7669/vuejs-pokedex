@@ -6,13 +6,13 @@ const headerTitle = "POKEMON";
 </script>
 
 <template>
-    <header class="header"> 
+    <header class="header">
         <div class="header-container">
-            <RouterLink 
+            <RouterLink
                 to="/"
                 class="logo-container"
             >
-                <img 
+                <img
                     class="logo"
                     src="@/assets/poke-ball.svg"
                 />
@@ -21,14 +21,14 @@ const headerTitle = "POKEMON";
                 {{ headerTitle }}
             </p>
             <div class="header-cta-container">
-                <RouteLinkPrimary 
+                <RouteLinkPrimary
                     :to="`/pokedex`"
                     :text="'Pokedex'"
                 />
-                <RouteLinkPrimary 
+                <!-- <RouteLinkPrimary
                     :to="`/playground`"
                     :text="'Playground'"
-                />
+                /> -->
             </div>
         </div>
     </header>
@@ -48,7 +48,7 @@ const headerTitle = "POKEMON";
     border-radius: 20rem;
     padding: 0.8rem 1rem;
 }
-    
+
 .header-container {
     display: grid;
     grid-auto-rows: auto;
